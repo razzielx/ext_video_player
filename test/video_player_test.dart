@@ -12,6 +12,7 @@ import 'package:ext_video_player/ext_video_player.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:video_player_platform_interface/video_player_platform_interface.dart';
 import 'package:video_player_platform_interface/messages.dart';
+import 'package:youtube_explode_dart/src/videos/streams/video_quality.dart';
 
 class FakeController extends ValueNotifier<VideoPlayerValue>
     implements VideoPlayerController {
@@ -55,13 +56,16 @@ class FakeController extends ValueNotifier<VideoPlayerValue>
 
   @override
   Future<void> setPlaybackSpeed(double speed) {
-    // TODO: implement setPlaybackSpeed
     throw UnimplementedError();
   }
 
   @override
   // TODO: implement videoPlayerOptions
   VideoPlayerOptions get videoPlayerOptions => throw UnimplementedError();
+
+  @override
+  // TODO: implement youtubeVideoQuality
+  VideoQuality get youtubeVideoQuality => throw UnimplementedError();
 }
 
 Future<ClosedCaptionFile> _loadClosedCaption() async =>
@@ -587,10 +591,8 @@ void main() {
   });
 }
 
-class FakeVideoPlayerPlatform extends VideoPlayerApiTest {
-  FakeVideoPlayerPlatform() {
-    VideoPlayerApiTestSetup(this);
-  }
+class FakeVideoPlayerPlatform {
+  FakeVideoPlayerPlatform() {}
 
   Completer<bool> initialized = Completer<bool>();
   List<String> calls = <String>[];
